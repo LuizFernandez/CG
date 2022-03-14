@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/luisfernandes/Desktop/CG/Guiao_1/code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -o CMakeFiles/class1.dir/main.cpp.o -c /home/luisfernandes/Desktop/CG/Guiao_1/code/main.cpp",
+  "file": "/home/luisfernandes/Desktop/CG/Guiao_1/code/main.cpp"
+}
+]
