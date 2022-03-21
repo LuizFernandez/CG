@@ -7,6 +7,16 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
+float alfa = 0.0f, beta = 0.5f, radius = 50.0f;
+float camX, camY, camZ;
+
+void spherical2Cartesian() {
+
+	camX = radius * cos(beta) * sin(alfa);
+	camY = radius * sin(beta);
+	camZ = radius * cos(beta) * cos(alfa);
+}
+
 void changeSize(int w, int h) {
 
 	// Prevent a divide by zero, when window is too short
@@ -33,9 +43,41 @@ void changeSize(int w, int h) {
 }
 
 
-void drawCylinder(float radius, float height, int slices) {
+void drawCylinder(float radius, float height, int slices) { //Ver como mudar de cor cada fatia
 
-// put code to draw cylinder in here
+	float angles = (M_PI*2) / slices;
+	float posy = height / 2;
+	float colordes = 1 / slices;
+	float color = 1;
+
+	glBegin(GL_TRIANGLES);
+	for(int i = 0; i < slices; i++){
+		glColor3f(0.0, color, 0.0);
+
+		//Base
+		glBegin(GL_TRIANGLES);
+			glVertex3f(0.0,-posy,0.0);
+			glVertex3f(cos(angles*i) * radius, -posy, sin(angles*i) * radius);
+			glVertex3f(cos(angles*(i+1)) * radius, -posy, sin(angles*(i+1))*radius);
+		glEnd();
+
+		//Topo
+		glBegin(GL_TRIANGLES);
+			glVertex3f(0.0,posy,0.0);
+			glVertex3f(cos(angles*(i+1)) * radius, posy, sin(angles*(i+1))*radius);
+			glVertex3f(cos(angles*i) * radius, posy, sin(angles*i) * radius);
+		glEnd();
+
+		//Lateral
+		glBegin(GL_QUADS);
+			glVertex3f(cos(angles*i) * radius, -posy, sin(angles*i) * radius);
+			glVertex3f(cos(angles*i) * radius, posy, sin(angles*i) * radius);
+			glVertex3f(cos(angles*(i+1)) * radius, posy, sin(angles*(i+1))*radius);
+			glVertex3f(cos(angles*(i+1)) * radius, -posy, sin(angles*(i+1))*radius);
+		glEnd();
+		
+		color -= colordes;
+	}
 
 }
 
@@ -47,7 +89,7 @@ void renderScene(void) {
 
 	// set the camera
 	glLoadIdentity();
-	gluLookAt(5.0,5.0,5.0, 
+	gluLookAt(camX,camY,camZ, 
 		      0.0,0.0,0.0,
 			  0.0f,1.0f,0.0f);
 
@@ -57,20 +99,38 @@ void renderScene(void) {
 	glutSwapBuffers();
 }
 
-
-void processKeys(unsigned char c, int xx, int yy) {
-
-// put code to process regular keys in here
-
-}
-
-
 void processSpecialKeys(int key, int xx, int yy) {
 
-// put code to process special keys in here
+	switch(key){
+		case GLUT_KEY_RIGHT:
+			alfa -= 0.1;
+			break;
+		case GLUT_KEY_LEFT:
+			alfa += 0.1;
+			break;
+		case GLUT_KEY_UP:
+			beta += 0.1;
+			if(beta > 1.5f)
+				beta = 1.5f;
+			break;
+		case GLUT_KEY_DOWN:
+			beta -= 0.1;
+			if(beta < -1.5f)
+				beta = -1.5f;
+			break;
+		case GLUT_KEY_PAGE_UP:
+			radius += 1.0f;
+			break;
+		case GLUT_KEY_PAGE_DOWN:
+			radius -= 1.0f;
+			if(radius < 1.0f)
+				radius = 1.0f;
+			break;
+	}
+	spherical2Cartesian();
+	glutPostRedisplay();
 
 }
-
 
 int main(int argc, char **argv) {
 
@@ -86,7 +146,6 @@ int main(int argc, char **argv) {
 	glutReshapeFunc(changeSize);
 	
 // Callback registration for keyboard processing
-	glutKeyboardFunc(processKeys);
 	glutSpecialFunc(processSpecialKeys);
 
 //  OpenGL settings

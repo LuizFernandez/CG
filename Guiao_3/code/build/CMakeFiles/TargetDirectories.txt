@@ -1,0 +1,3 @@
+/home/luisfernandes/Desktop/CG/Guiao_3/code/build/CMakeFiles/rebuild_cache.dir
+/home/luisfernandes/Desktop/CG/Guiao_3/code/build/CMakeFiles/edit_cache.dir
+/home/luisfernandes/Desktop/CG/Guiao_3/code/build/CMakeFiles/class3.dir
