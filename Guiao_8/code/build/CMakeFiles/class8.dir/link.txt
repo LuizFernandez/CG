@@ -1,1 +1,0 @@
-/bin/x86_64-linux-gnu-g++-9  -g  -rdynamic CMakeFiles/class8.dir/catmull-rom.cpp.o  -o class8  -lGL -lGLU -lglut -lXmu -lXi -lGL -lGLU -lglut -lXmu -lXi 
