@@ -1,0 +1,39 @@
+Guiao nº1
+
+Bibliotecas
+    => OpenGL
+        -> A partir da 2.1, programa-se na placa Grafica
+    => GLU
+        -> API que funciona por cima da OpenGL
+    => GLUT
+        -> Junta o OpenGL e o SO
+
+Programaçao Orientada a Eventos
+    => Define um evento por cada açao
+    => Aplicaçao controlada pelo controlador da janela (GLUT)
+    => Apenas e neccessario
+        -> Definir as funçoes para cada açao gerar um evento
+        -> Registar as funçoes com o GLUT
+
+
+MAIN
+    => Inicializaçao do GLUT e da Window
+    => Registar as funçoes que iram gerar o evento
+    => Ciclo Principal do GLUT
+
+Inicializaçao do GLUT e da Window
+    => Inicializar o GLUT -> glutInit(&argc, argv);
+    => Definir a Janela -> glutInitDisplayMode(...);
+    => Localizaçao da Janela -> glutInitWindowPosition(x,y);
+    => Posiçao da Janela -> glutInitWindowSize(x,y);
+    => Gerar a Janela -> glutCreateWindow(Nome da Janela);
+
+Registar as funçoes que iram gerar o evento
+    => 
+    =>
+    =>
+    => 
+
+Ciclo Principal do GLUT
+    => Funçao principla -> glutMainLoop(..)
+        -> Cada evento recebido e colocado numa queue e sao processado por ordem
