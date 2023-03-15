@@ -1,0 +1,55 @@
+Guiao 3
+
+=> Coordenadas Polares
+    -> Especificadas atraves do angulo e do raio;
+    -> Coordenadas:
+        - P_x = r * sin(alpha);
+        - P_z = r * cos(alpha);
+
+Nota => O x e sin por causa da regra da mao direita, sendo o vertor vertical o eixo do y's, 
+    a rotaçao acontece do eixo dos z's para o eixo dos x's
+
+=> Coordenandas Esfericas
+    -> Especificadas atraves de dois angulos e do raio;
+    -> Coordenadas:
+        - P_x = r * cos(Beta) * sin(alpha)
+        - P_z = r * cos(Beta) * cos(alpha)
+        - P_y = r * sin(Beta)
+    -> Beta e o angulo que o plano xOz faz com o vetor que liga o Ponto a origem
+    -> alpha e o angulo que a projeçao do ponto no plano xOz com o eixo z
+
+Nota => r * cos(Beta) = r', ou seja, e a distancia entre a projeçao do ponto no plano xOz e a origem
+
+=> Camara
+    -> Move se em volta do objeto sempre centralizado no centro do objeto
+    -> Logica da Camara:
+        - glutLookAt( px, py, pz, // Posiçao da Camara
+                      lx, ly, lz, // Local para onde olha (Direçao)
+                      ux, uy, uz) // Vetor vertical => (0.0f, 1.0f, 0.0f)
+    -> Normalmente o Local para onde olha e o centro dos eixos, neste caso, (0.0f, 0.0f, 0.0f)
+    -> A posiçao da esfera e dada por coordenadas esfericas, uma vez que ela se move atraves da superfici da esfera,
+        logo px => (r * cos(Beta) * sin(alpha)), py => r * sin(Beta) e pz => r * cos(Beta) * sin(alpha)
+
+Nota => Beta esta entre -PI/2 e PI/2, se for menor que -PI/2 ou maior que PI/2 a camara inverte
+
+    -> Alteraçoes nas posiçoes da camara, faz com que ela ande a volta de um objeto
+    -> Para evitar o uso de r, considera-se que o comprimento e 1. Com esta analogia, e possivel modificar a (Direçao) para assim dar a perceçao que a camara anda pela cena, e nao a volta da cena
+    -> Direçao => P_x + d_x, P_y + d_y, P_z + d_z
+    -> Vetor d e a direçao de observaçao, e k e uma escala que faz com que a camara ande mais depressa ou mais devagar
+    -> Vetor up => da a sensaçao que anda de um lado para o outro
+    -> Para esse evento usar o Produto vetorial entre o vetor Up e o vetor d (r = d . up ou l = up . d)
+
+    -> Logica da Camra:
+        - Direçao => P' = P + k_1 * d
+        - Movimento Lateral => P' = P * k_2 * r
+
+Nota => Para Normalizar o r => r = r / ||r||
+
+=> Logica para desenhar um cilindro:
+    -> Um ponto na base superior:
+        P (r * sin(alpha), h/2, r * cos(alpha))
+        -> y = h/2 porque a figura esta centralizada nos eixos,
+             logo metade da figura esta a cima do plano xOz, 
+             e a outra metade a baixo deste plano   
+    -> Um ponto na base inferior:
+        P (r * sin(alpha),-h/2, r * cos(alpha))

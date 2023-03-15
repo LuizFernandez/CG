@@ -1,0 +1,7 @@
+Guiao 4
+
+=> Com o uso de glVertex3f num modelo com muitos triangulos, 
+    por cada ponto e executado milhares de vezes o que traz demasiado trabalho ao CPU, 
+    enquanto o GPU nao esta a trabalhar
+
+=> 

@@ -1,0 +1,43 @@
+Guiao 2
+
+=> Basic GLUT Interactivity
+    -> Input devices:
+        - Rato
+        - Teclado
+        - Trackball
+        - Tablet
+    -> Para usar estes devices e necessario escrever funçoes que tratem destes Inputs
+    -> Funçoes tem que estar registadas com o GLUT
+
+=> KeyBoard
+    -> Varias teclas
+    -> funçao de registo => glutKeyboardFunc(nome_funcao)
+    -> Descriçao da funçao => void nome_funcao(unsigned char key, int x, int y)
+    -> Funçao chamada pelo GLUT sempre que uma determinada tecla seja acionada.
+    -> Parametros:
+        - key => tecla
+        - x,y => Posiçao do Rato na janela => Selecionar um objeto para ser alterado
+
+    => Teclas especiais => F1, ..., Home, End, Arrows, etc.
+        -> Funçao => glutSpecialFunc(nome_funcao)
+        -> Descriçao da funcao => void function_name(int key_code, int x, int y);
+            - key_codes => constantes
+
+=> Rato
+    -> Carregar e libertar um Rato
+
+
+    -> Modo Passivo e Ativo
+        - Modo Passivo => Mexer no rato sem carregar nele => glutPassoveMotionFunc(nome_funcao)
+
+=> 3D Modelling 
+    -> glVertex3f:
+        - gl => Nome da biblioteca
+        - Vertex => Tipo 
+        - 3 => Numero de argumentos
+        - f => Tipo de argumentos
+    -> Vertices dentro de glBegin para serem processados
+    -> Argumento do glBegin vai apenas processar os vertices que precisar, ou seja, quando e GL_TRIANGLES apenas 3 vertices sao processados ou restantes sao ignorados
+    -> O Desenho de um objeto tem frente e tras, ou seja, orientado. Cada lado e definido pela ordem em que os pontos sao desenhados (Regra da mao direita)
+    
+    
