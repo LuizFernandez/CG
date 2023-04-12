@@ -254,12 +254,15 @@ void processSpecialKeys(int key, int xx, int yy) {
 			beta = -1.5f;
 		break;
 
-	case GLUT_KEY_PAGE_DOWN: radius -= 0.1f;
+	case GLUT_KEY_PAGE_DOWN: 
+		radius -= 0.1f;
 		if (radius < 0.1f)
 			radius = 0.1f;
 		break;
 
-	case GLUT_KEY_PAGE_UP: radius += 0.1f; break;
+	case GLUT_KEY_PAGE_UP: 
+		radius += 0.1f;
+		break;
 	}
 	spherical2Cartesian();
 	glutPostRedisplay();
