@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -rdynamic CMakeFiles/class8.dir/main.cpp.o -o class8  -lGL -lGLU -lglut -lGL -lGLU -lglut 
