@@ -194,7 +194,7 @@ void prepareCilinder(float height, float radius, int sides) {
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * vertexCount * 3, v, GL_STATIC_DRAW);
 
     glBindBuffer(GL_ARRAY_BUFFER, vertices[1]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * normalCount * 3, n, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER,sizeof(float) * normalCount * 3, n, GL_STATIC_DRAW);
 
 	free(v);
     free(n);
@@ -298,7 +298,7 @@ void processKeys(int key, int xx, int yy)
 
 void initGL() {
 
-// OpenGL settings 
+// OpenGL settings
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 
@@ -313,7 +313,7 @@ void initGL() {
 
     // Define light Color
     float dark[4] = {0.2, 0.2, 0.2, 1.0};
-    float white[4] = {1.0, 1.0, 1.0, 1.0,};
+    float white[4] = {1.0, 1.0, 1.0, 1.0};
     float black[4] = {0.0f, 0.0f, 0.0f, 0.0f};
 
     // Light Colors

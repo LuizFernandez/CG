@@ -1,0 +1,3 @@
+/home/deadlock/Desktop/CG/Guiao_13/code/cmake-build-debug/CMakeFiles/class11.dir
+/home/deadlock/Desktop/CG/Guiao_13/code/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/deadlock/Desktop/CG/Guiao_13/code/cmake-build-debug/CMakeFiles/rebuild_cache.dir
